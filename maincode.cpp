@@ -194,7 +194,40 @@ int main() {
             }
         }
     }
+    
+    cout << "Enter Num";
+    cin >> num;
+    switch (type)
+    {
+    case 1: {
+        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+            *first += num;
+        }
+        break;
+    }
+    case 2: {
+        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+            *first -= num;
+        }
+        break;
+    }
+    case 3: {
+        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+            *first *= num;
+        }
+        break;
+    }
+    case 4: {
+        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+            *first /= num;
+        }
+        break;
+    }
+    }
+}
 
+    
+    
 
     cout << "\nSECOND\n";
     for (int i = 0; i < n; i++) {  //ÂÛÂÎÄ
