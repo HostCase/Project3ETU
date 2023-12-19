@@ -26,17 +26,15 @@ int main() {
        Sleep(300);
 
     }
-    Sleep(5000);
     for (int y = k + 1; y < n - k; y++) {// ÒÓÒ ÇÐÀÄÀ
         arra[y][n - 1 - k] = 1 + rand() % (n * n);
-        destCoord.X = (n-1)*10;
+        destCoord.X = (n-1-k)*10;
         destCoord.Y = y*4;
         SetConsoleCursorPosition(hStdout, destCoord);
         cout << arra[y][n-1-k] << '\r';
         cout.flush();
         Sleep(300);
     }
-    Sleep(2000);
 
     for (int x = n - 2 - k; x >= k; x--) {
         arra[n - 1 - k][x] = 1 + rand() % (n * n);
@@ -47,7 +45,7 @@ int main() {
         cout.flush();
         Sleep(300);
     }
-    Sleep(2000);
+    
 
     for (int y = n - 2 - k; y > k; y--) {
         arra[y][k] = 1 + rand() % (n * n);
@@ -59,10 +57,9 @@ int main() {
         Sleep(300);
 
     }
-    Sleep(2000);
     k++;
     } while (!(k == n));
-    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cout << arra[i][j] << " ";
