@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Windows.h>
-
+#include <algorithm>
 using namespace std;
 int main() {
     // const from cin??
@@ -175,33 +175,25 @@ int main() {
     }
     }
 
-
-
-    for (int i = 0; i < n*n; i++) {
-        for (int k = 0; k < n; k++) {
-            for (int j = 0; j < n ; j++) {
-                
-                if (k != (n - 1)) {
-                    if ((j != (n - 2))||(j!=(n-2))) {
-                        if (arratest[k][j] > arratest[k][j + 1]) {
-                            swap(arratest[k][j], arratest[k][j + 1]);
-                        }
-                    }
-
-                    if (j == (n - 1)) {
-                        if (arratest[k][j] > arratest[k + 1][0]) {
-                            swap(arratest[k][j], arratest[k + 1][0]);
-                            cout << "TEST TEST " << arratest[k][j] << "      " << arratest[k + 1][0];
-                        }
-                    }
+    int(*arr)[n] = arratest;
+    //сортировка
+    int x;
+    for (int k = 0; k < n; k++)
+    {
+        for (int m = 0; m < n; m++)
+        {
+            x = m + 1;
+            for (int i = k; i < n; i++)
+            {
+                for (int j = x; j < n; j++)
+                {
+                    if (arr[k][m] > arr[i][j])
+                        swap(arr[k][m], arr[i][j]);
                 }
-                if (arratest[k][j] > arratest[k][j + 1]) {
-                    swap(arratest[k][j], arratest[k][j + 1]);
-                }
+                x = 0;
             }
         }
     }
-
 
 
     cout << "\nSECOND\n";
