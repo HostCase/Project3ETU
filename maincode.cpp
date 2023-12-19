@@ -125,5 +125,31 @@ int main() {
         }
         cout << "\n";
     }
+    //swap first type
+    /*
+    for (int i = 0; i < (n / 2); i++) {
+        for (int g = 0; g < (n / 2); g++) {
+            swap(arratest[i][g], arratest[i][g+n/2]);
+            swap(arratest[i][g+n/2], arratest[i+n/2][g+n/2]);
+            swap(arratest[i + n/2][g + n/2], arratest[i][g]);
+            swap(arratest[i][g], arratest[n / 2 + i][g]);
+        }
+    }
+    */
+    //swap second type
+    for (int i = 0; i < (n / 2); i++) {
+        for (int g = 0; g < (n / 2); g++) {
+            swap(arratest[i][g], arratest[i + n / 2][g + n / 2]);
+            swap(arratest[i][g + n / 2], arratest[i+n/2][g]);
+        }
+    }
 
+    cout << "\nSECOND\n";
+    for (int i = 0; i < n; i++) {  //ÂÛÂÎÄ
+
+        for (int j = 0; j < n; j++) {
+            cout << arratest[i][j] << " ";
+        }
+        cout << "\n";
+    }
 }
