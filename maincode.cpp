@@ -70,6 +70,7 @@ int main() {
 
             cout << endl;
         }
+        break;
     }
     case 2: {
         int arrasecond[n][n];
@@ -107,42 +108,101 @@ int main() {
 
             cout << endl;
         }
+        break;
     }
     }
-    
-    
-    
+
+
+
     int arratest[n][n];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            arratest[i][j] = i + j;
+            arratest[i][j] = i + j * 100;
         }
     }
     for (int i = 0; i < n; i++) {
-        
+
         for (int j = 0; j < n; j++) {
             cout << arratest[i][j] << " ";
         }
         cout << "\n";
     }
-    //swap first type
-    /*
-    for (int i = 0; i < (n / 2); i++) {
-        for (int g = 0; g < (n / 2); g++) {
-            swap(arratest[i][g], arratest[i][g+n/2]);
-            swap(arratest[i][g+n/2], arratest[i+n/2][g+n/2]);
-            swap(arratest[i + n/2][g + n/2], arratest[i][g]);
-            swap(arratest[i][g], arratest[n / 2 + i][g]);
+    int typeswap = 0;
+
+    switch (typeswap) {
+        //swap first type
+    case 1: {
+        for (int i = 0; i < (n / 2); i++) {
+            for (int g = 0; g < (n / 2); g++) {
+                swap(arratest[i][g], arratest[i][g + n / 2]);
+                swap(arratest[i][g + n / 2], arratest[i + n / 2][g + n / 2]);
+                swap(arratest[i + n / 2][g + n / 2], arratest[i][g]);
+                swap(arratest[i][g], arratest[n / 2 + i][g]);
+            }
+        }
+        break;
+    }
+
+          //swap second type
+    case 2: {
+        for (int i = 0; i < (n / 2); i++) {
+            for (int g = 0; g < (n / 2); g++) {
+                swap(arratest[i][g], arratest[i + n / 2][g + n / 2]);
+                swap(arratest[i][g + n / 2], arratest[i + n / 2][g]);
+            }
+        }
+        break;
+    }
+    case 3: {
+
+        for (int i = 0; i < (n / 2); i++) {
+            for (int g = 0; g < (n / 2); g++) {
+                swap(arratest[i][g], arratest[i + n / 2][g]);
+                swap(arratest[i][g + n / 2], arratest[i + n / 2][g + n / 2]);
+            }
+        }
+        break;
+    }
+    case 4: {
+        for (int i = 0; i < (n / 2); i++) {
+            for (int g = 0; g < (n / 2); g++) {
+                swap(arratest[i][g], arratest[i][g + n / 2]);
+                swap(arratest[i + n / 2][g], arratest[i + n / 2][g + n / 2]);
+            }
+        }
+        break;
+
+    }
+    }
+
+
+
+    for (int i = 0; i < n*n; i++) {
+        for (int k = 0; k < n; k++) {
+            for (int j = 0; j < n ; j++) {
+                
+                if (k != (n - 1)) {
+                    if ((j != (n - 2))||(j!=(n-2))) {
+                        if (arratest[k][j] > arratest[k][j + 1]) {
+                            swap(arratest[k][j], arratest[k][j + 1]);
+                        }
+                    }
+
+                    if (j == (n - 1)) {
+                        if (arratest[k][j] > arratest[k + 1][0]) {
+                            swap(arratest[k][j], arratest[k + 1][0]);
+                            cout << "TEST TEST " << arratest[k][j] << "      " << arratest[k + 1][0];
+                        }
+                    }
+                }
+                if (arratest[k][j] > arratest[k][j + 1]) {
+                    swap(arratest[k][j], arratest[k][j + 1]);
+                }
+            }
         }
     }
-    */
-    //swap second type
-    for (int i = 0; i < (n / 2); i++) {
-        for (int g = 0; g < (n / 2); g++) {
-            swap(arratest[i][g], arratest[i + n / 2][g + n / 2]);
-            swap(arratest[i][g + n / 2], arratest[i+n/2][g]);
-        }
-    }
+
+
 
     cout << "\nSECOND\n";
     for (int i = 0; i < n; i++) {  //ÂÛÂÎÄ
@@ -152,4 +212,9 @@ int main() {
         }
         cout << "\n";
     }
+
+
+
+
+
 }
