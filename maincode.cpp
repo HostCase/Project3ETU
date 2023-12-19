@@ -194,36 +194,38 @@ int main() {
             }
         }
     }
-    
+    int num, type;
+    cout << "Choose type";
+    cin >> type;
     cout << "Enter Num";
     cin >> num;
     switch (type)
     {
     case 1: {
-        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
             *first += num;
         }
         break;
     }
     case 2: {
-        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
             *first -= num;
         }
         break;
     }
     case 3: {
-        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
             *first *= num;
         }
         break;
     }
     case 4: {
-        for (int* first = arratest, *second = arratest, *end = arratest + N * N - 1; first <= end; first++) {
+        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
             *first /= num;
         }
         break;
     }
-    }
+    
 }
 
     
