@@ -16,7 +16,8 @@ int main() {
     COORD destCoord;
     hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     int needcal = 0;
-    if (needcal == 1) {
+    switch (needcal) {
+    case 1: {
         do {
             for (int x = k; x < n - k; x++) {
                 arra[k][x] = 1 + rand() % (n * n);
@@ -70,40 +71,59 @@ int main() {
             cout << endl;
         }
     }
-    int arrasecond[n][n];
-    k = 0;
-    do {
-        for (int i=0; i < n; i++) {
-            if (k % 2 == 0) {
-                for (int y = n - 1; y > -1; y--) {
-                    arrasecond[y][i] = 1 + rand() % (n * n);
-                    destCoord.X = (i) * 10;
-                    destCoord.Y = y * 4;
-                    SetConsoleCursorPosition(hStdout, destCoord);
-                    cout << arrasecond[y][i] << '\r';
-                    cout.flush();
+    case 2: {
+        int arrasecond[n][n];
+        k = 0;
+        do {
+            for (int i = 0; i < n; i++) {
+                if (k % 2 == 0) {
+                    for (int y = n - 1; y > -1; y--) {
+                        arrasecond[y][i] = 1 + rand() % (n * n);
+                        destCoord.X = (i) * 10;
+                        destCoord.Y = y * 4;
+                        SetConsoleCursorPosition(hStdout, destCoord);
+                        cout << arrasecond[y][i] << '\r';
+                        cout.flush();
+                    }
                 }
-            }
-            else {
-                for (int y = 0; y < n; y++) {
-                    arrasecond[y][i] = 1 + rand() % (n * n);
-                    destCoord.X = (i) * 10;
-                    destCoord.Y = y * 4;
-                    SetConsoleCursorPosition(hStdout, destCoord);
-                    cout << arrasecond[y][i] << '\r';
-                    cout.flush();
+                else {
+                    for (int y = 0; y < n; y++) {
+                        arrasecond[y][i] = 1 + rand() % (n * n);
+                        destCoord.X = (i) * 10;
+                        destCoord.Y = y * 4;
+                        SetConsoleCursorPosition(hStdout, destCoord);
+                        cout << arrasecond[y][i] << '\r';
+                        cout.flush();
+                    }
                 }
+                k++;
             }
-            k++;
+        } while (!(k == n));
+        cout << "\n\n\n";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << arrasecond[i][j] << " ";
+            }
+
+            cout << endl;
         }
-    } while (!(k == n));
-    cout << "\n\n\n";
+    }
+    }
+    
+    
+    
+    int arratest[n][n];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cout << arrasecond[i][j] << " ";
+            arratest[i][j] = i + j;
         }
-
-        cout << endl;
+    }
+    for (int i = 0; i < n; i++) {
+        
+        for (int j = 0; j < n; j++) {
+            cout << arratest[i][j] << " ";
+        }
+        cout << "\n";
     }
 
 }
