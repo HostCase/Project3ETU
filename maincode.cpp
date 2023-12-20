@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <algorithm>
 using namespace std;
+
+
 int main() {
     // const from cin??
     const int n = 6;
@@ -10,13 +12,15 @@ int main() {
     }
 
     int arra[n][n];
+
     int k = 0;
-    int value = 1;
     HANDLE hStdout;
     COORD destCoord;
     hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-    int needcal = 0;
-    switch (needcal) {
+    int firsttask = 0;
+    cout << "Choose type of filling from first task";
+    cin >> firsttask;
+    switch (firsttask) {
     case 1: {
         do {
             for (int x = k; x < n - k; x++) {
@@ -112,32 +116,18 @@ int main() {
     }
     }
 
-
-
-    int arratest[n][n];
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            arratest[i][j] = i + j * 100;
-        }
-    }
-    for (int i = 0; i < n; i++) {
-
-        for (int j = 0; j < n; j++) {
-            cout << arratest[i][j] << " ";
-        }
-        cout << "\n";
-    }
     int typeswap = 0;
+    cout << "Choose typeswap from 2 task";
 
     switch (typeswap) {
         //swap first type
     case 1: {
         for (int i = 0; i < (n / 2); i++) {
             for (int g = 0; g < (n / 2); g++) {
-                swap(arratest[i][g], arratest[i][g + n / 2]);
-                swap(arratest[i][g + n / 2], arratest[i + n / 2][g + n / 2]);
-                swap(arratest[i + n / 2][g + n / 2], arratest[i][g]);
-                swap(arratest[i][g], arratest[n / 2 + i][g]);
+                swap(arra[i][g], arra[i][g + n / 2]);
+                swap(arra[i][g + n / 2], arra[i + n / 2][g + n / 2]);
+                swap(arra[i + n / 2][g + n / 2], arra[i][g]);
+                swap(arra[i][g], arra[n / 2 + i][g]);
             }
         }
         break;
@@ -147,8 +137,8 @@ int main() {
     case 2: {
         for (int i = 0; i < (n / 2); i++) {
             for (int g = 0; g < (n / 2); g++) {
-                swap(arratest[i][g], arratest[i + n / 2][g + n / 2]);
-                swap(arratest[i][g + n / 2], arratest[i + n / 2][g]);
+                swap(arra[i][g], arra[i + n / 2][g + n / 2]);
+                swap(arra[i][g + n / 2], arra[i + n / 2][g]);
             }
         }
         break;
@@ -157,8 +147,8 @@ int main() {
 
         for (int i = 0; i < (n / 2); i++) {
             for (int g = 0; g < (n / 2); g++) {
-                swap(arratest[i][g], arratest[i + n / 2][g]);
-                swap(arratest[i][g + n / 2], arratest[i + n / 2][g + n / 2]);
+                swap(arra[i][g], arra[i + n / 2][g]);
+                swap(arra[i][g + n / 2], arra[i + n / 2][g + n / 2]);
             }
         }
         break;
@@ -166,16 +156,16 @@ int main() {
     case 4: {
         for (int i = 0; i < (n / 2); i++) {
             for (int g = 0; g < (n / 2); g++) {
-                swap(arratest[i][g], arratest[i][g + n / 2]);
-                swap(arratest[i + n / 2][g], arratest[i + n / 2][g + n / 2]);
+                swap(arra[i][g], arra[i][g + n / 2]);
+                swap(arra[i + n / 2][g], arra[i + n / 2][g + n / 2]);
             }
         }
         break;
 
     }
     }
-
-    int(*arr)[n] = arratest;
+    
+    int(*arr)[n] = arra;
     //сортировка
     int x;
     for (int k = 0; k < n; k++)
@@ -194,6 +184,7 @@ int main() {
             }
         }
     }
+    
     int num, type;
     cout << "Choose type";
     cin >> type;
@@ -202,26 +193,38 @@ int main() {
     switch (type)
     {
     case 1: {
-        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
-            *first += num;
+        for (int i = 0; i < n; i++) {
+           for(int g=0;g<n;g++){
+               arra[i][g] = arra[i][g] - num;
+
+        }
         }
         break;
     }
     case 2: {
-        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
-            *first -= num;
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] + num;
+
+            }
         }
         break;
     }
     case 3: {
-        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
-            *first *= num;
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] * num;
+
+            }
         }
         break;
     }
     case 4: {
-        for (int* first = arratest, *second = arratest, *end = arratest + n * n - 1; first <= end; first++) {
-            *first /= num;
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] / num;
+
+            }
         }
         break;
     }
@@ -235,13 +238,10 @@ int main() {
     for (int i = 0; i < n; i++) {  //ВЫВОД
 
         for (int j = 0; j < n; j++) {
-            cout << arratest[i][j] << " ";
+            cout << arra[i][j] << " ";
         }
         cout << "\n";
     }
 
-
-
-
-
 }
+
