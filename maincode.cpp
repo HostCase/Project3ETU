@@ -1,14 +1,15 @@
 #include <iostream>
 #include <Windows.h>
-#include <algorithm>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 const int n = 6;
 void firsttask(int arra[][n]);
 void swapmachine(int arra[][n]);
 void showmatrix(int arra[][n]);
 void modofmatrix(int arra[][n]);
-void sortArranew(int* arr, int size);
+void sortArranew(int* arr);
+void idztransport(int arra[][n]);
 int main() {
     // const from cin??
     if (n % 2 == 1) {
@@ -17,7 +18,7 @@ int main() {
     int numberoftask;
     int arra[n][n];
     do {
-        cout << "Choose task(tips - 7)\n";
+        cout << "Choose task(tips - 8)\n";
         cin >> numberoftask;
         switch (numberoftask) {
 
@@ -34,7 +35,7 @@ int main() {
         }
         case 3: {
             cout << "Sorting\n";
-            sortArranew(&arra[0][0], n);
+            sortArranew(&arra[0][0]);
             cout << "Completed\n";
             break;
         }
@@ -55,12 +56,31 @@ int main() {
             break;
         }
         case 7: {
+            srand(time(0));
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    arra[i][j] = (rand() % 100) + 1;
+                }
+            }
+            cout << "Original Matrix:\n";
+            showmatrix(arra);
+
+            cout << "Transpose Process:\n";
+            idztransport(arra);
+
+            cout << "Final Transposed Matrix:\n";
+            showmatrix(arra);
+            break;
+        }
+        case 8: {
             cout << "\nFirst task(filling) - 1";
             cout << "\nSecond task(swap) - 2";
             cout << "\nThird task(sort)- 3";
             cout << "\nFourth task(math) - 4";
             cout << "\nShow matrix - 5";
-            cout << "\nClear console - 6\n\n\n";
+            cout << "\nClear console - 6";
+            cout << "\nIDZ 9 - 7\n\n\n";
                 break;
         }
         }
@@ -170,9 +190,6 @@ void firsttask(int arra[][n]) {
     }
 }
 
-
-
-
 void swapmachine(int arra[][n]) {
     int typeswap;
     cout << "Choose type of swap(1,2,3,4)\n";
@@ -230,9 +247,8 @@ void swapmachine(int arra[][n]) {
     }
 }
 
-
 void showmatrix(int arra[][n]) {
-    cout << "\n\n\n\n\n\n\n\n\n\n";
+    cout << "\n";
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cout << arra[i][j] << " ";
@@ -241,7 +257,6 @@ void showmatrix(int arra[][n]) {
     }
 
 }
-
 
 void modofmatrix(int arra[][n]) {
     int num, type;
@@ -291,14 +306,31 @@ void modofmatrix(int arra[][n]) {
     }
     cout << "Completed\n";
 }
-void sortArranew(int* arr, int size) {
-    for (int i = 0; i < size * size; i++) {
-        for (int j = i + 1; j < size * size; j++) {
+
+void sortArranew(int* arr) {
+    for (int i = 0; i < n * n; i++) {
+        for (int j = i + 1; j < n * n; j++) {
             if (*(arr + i) > *(arr + j)) {
                 int temp = *(arr + i);
                 *(arr + i) = *(arr + j);
                 *(arr + j) = temp;
             }
+        }
+    }
+}
+
+void idztransport(int arra[][n]) {
+    int temp;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            temp = arra[i][j];
+            arra[i][j] = arra[j][i];
+            arra[j][i] = temp;
+
+            // Display the Transpose Process
+            cout << "After swapping " << arra[i][j] << " with " << arra[j][i] << ":" << endl;
+            Sleep(1300);
+            showmatrix(arra);
         }
     }
 }
