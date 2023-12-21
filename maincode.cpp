@@ -7,8 +7,8 @@ const int n = 6;
 void firsttask(int arra[][n]);
 void swapmachine(int arra[][n]);
 void showmatrix(int arra[][n]);
-void sort(int arr[][n]);
 void modofmatrix(int arra[][n]);
+void sortArranew(int* arr, int size);
 int main() {
     // const from cin??
     if (n % 2 == 1) {
@@ -34,7 +34,7 @@ int main() {
         }
         case 3: {
             cout << "Sorting\n";
-            sort(arra);
+            sortArranew(&arra[0][0], n);
             cout << "Completed\n";
             break;
         }
@@ -241,25 +241,8 @@ void showmatrix(int arra[][n]) {
     }
 
 }
-void sort(int arr[][n]) {
-    int x;
-    for (int k = 0; k < n; k++)
-    {
-        for (int m = 0; m < n; m++)
-        {
-            x = m + 1;
-            for (int i = k; i < n; i++)
-            {
-                for (int j = x; j < n; j++)
-                {
-                    if (arr[k][m] > arr[i][j])
-                        swap(arr[k][m], arr[i][j]);
-                }
-                x = 0;
-            }
-        }
-    }
-}
+
+
 void modofmatrix(int arra[][n]) {
     int num, type;
     cout << "Choose type. \n 1 - minus\n2 - plus\n3 - *\n4 - /";
@@ -307,4 +290,15 @@ void modofmatrix(int arra[][n]) {
 
     }
     cout << "Completed\n";
+}
+void sortArranew(int* arr, int size) {
+    for (int i = 0; i < size * size; i++) {
+        for (int j = i + 1; j < size * size; j++) {
+            if (*(arr + i) > *(arr + j)) {
+                int temp = *(arr + i);
+                *(arr + i) = *(arr + j);
+                *(arr + j) = temp;
+            }
+        }
+    }
 }
