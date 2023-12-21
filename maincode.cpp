@@ -11,6 +11,9 @@ void modofmatrix(int arra[][n]);
 void sortArranew(int* arr);
 void idztransport(int arra[][n]);
 int main() {
+
+    cout << "For the normal operation of the program, it is better to expand the console to full screen!!!\n";
+    Sleep(1500);
     // const from cin??
     if (n % 2 == 1) {
         return 0;
