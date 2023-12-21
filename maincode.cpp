@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <stdlib.h>
 using namespace std;
-const int n = 10;
+const int n = 6;
 void firsttask(int arra[][n]);
 void swapmachine(int arra[][n]);
 void showmatrix(int arra[][n]);
+void sort(int arr[][n]);
+void modofmatrix(int arra[][n]);
 int main() {
     // const from cin??
     if (n % 2 == 1) {
@@ -15,7 +17,7 @@ int main() {
     int numberoftask;
     int arra[n][n];
     do {
-        cout << "Choose task\n";
+        cout << "Choose task(tips - 7)\n";
         cin >> numberoftask;
         switch (numberoftask) {
 
@@ -31,86 +33,35 @@ int main() {
             break;
         }
         case 3: {
-            int(*arr)[n] = arra;
-            //сортировка
-            int x;
-            for (int k = 0; k < n; k++)
-            {
-                for (int m = 0; m < n; m++)
-                {
-                    x = m + 1;
-                    for (int i = k; i < n; i++)
-                    {
-                        for (int j = x; j < n; j++)
-                        {
-                            if (arr[k][m] > arr[i][j])
-                                swap(arr[k][m], arr[i][j]);
-                        }
-                        x = 0;
-                    }
-                }
-            }
+            cout << "Sorting\n";
+            sort(arra);
+            cout << "Completed\n";
             break;
         }
         case 4: {
-            int num, type;
-            cout << "Choose type";
-            cin >> type;
-            cout << "Enter Num";
-            cin >> num;
-            switch (type)
-            {
-            case 1: {
-                for (int i = 0; i < n; i++) {
-                    for (int g = 0; g < n; g++) {
-                        arra[i][g] = arra[i][g] - num;
-
-                    }
-                }
-                break;
-            }
-            case 2: {
-                for (int i = 0; i < n; i++) {
-                    for (int g = 0; g < n; g++) {
-                        arra[i][g] = arra[i][g] + num;
-
-                    }
-                }
-                break;
-            }
-            case 3: {
-                for (int i = 0; i < n; i++) {
-                    for (int g = 0; g < n; g++) {
-                        arra[i][g] = arra[i][g] * num;
-
-                    }
-                }
-                break;
-            }
-            case 4: {
-                for (int i = 0; i < n; i++) {
-                    for (int g = 0; g < n; g++) {
-                        arra[i][g] = arra[i][g] / num;
-
-                    }
-                }
-                break;
-            }
-
-            }
+            modofmatrix(arra);
+            break;
         }
 
 
         case 5: {
-            cout << "\nSECOND\n";
-            for (int i = 0; i < n; i++) {  //ВЫВОД
-
-                for (int j = 0; j < n; j++) {
-                    cout << arra[i][j] << " ";
-                }
-                cout << "\n";
-            }
+            showmatrix(arra);
             break;
+        }
+        case 6: {
+            cout << "Clearing...";
+            Sleep (1500);
+            system("cls");
+            break;
+        }
+        case 7: {
+            cout << "\nFirst task(filling) - 1";
+            cout << "\nSecond task(swap) - 2";
+            cout << "\nThird task(sort)- 3";
+            cout << "\nFourth task(math) - 4";
+            cout << "\nShow matrix - 5";
+            cout << "\nClear console - 6\n\n\n";
+                break;
         }
         }
     }while (numberoftask);
@@ -289,4 +240,71 @@ void showmatrix(int arra[][n]) {
         cout << endl;
     }
 
+}
+void sort(int arr[][n]) {
+    int x;
+    for (int k = 0; k < n; k++)
+    {
+        for (int m = 0; m < n; m++)
+        {
+            x = m + 1;
+            for (int i = k; i < n; i++)
+            {
+                for (int j = x; j < n; j++)
+                {
+                    if (arr[k][m] > arr[i][j])
+                        swap(arr[k][m], arr[i][j]);
+                }
+                x = 0;
+            }
+        }
+    }
+}
+void modofmatrix(int arra[][n]) {
+    int num, type;
+    cout << "Choose type. \n 1 - minus\n2 - plus\n3 - *\n4 - /";
+    cin >> type;
+    cout << "Enter Num";
+    cin >> num;
+    switch (type)
+    {
+    case 1: {
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] - num;
+
+            }
+        }
+        break;
+    }
+    case 2: {
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] + num;
+
+            }
+        }
+        break;
+    }
+    case 3: {
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] * num;
+
+            }
+        }
+        break;
+    }
+    case 4: {
+        for (int i = 0; i < n; i++) {
+            for (int g = 0; g < n; g++) {
+                arra[i][g] = arra[i][g] / num;
+
+            }
+        }
+        break;
+    }
+
+    }
+    cout << "Completed\n";
 }
